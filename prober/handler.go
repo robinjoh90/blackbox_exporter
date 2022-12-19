@@ -188,6 +188,7 @@ func (sl scrapeLogger) Log(keyvals ...interface{}) error {
 func DebugOutput(module *config.Module, logBuffer *bytes.Buffer, registry *prometheus.Registry) string {
 	buf := &bytes.Buffer{}
 	fmt.Fprintf(buf, "Logs for the probe:\n")
+	fmt.Print(string(logBuffer.String()))
 	logBuffer.WriteTo(buf)
 	fmt.Fprintf(buf, "\n\n\nMetrics that would have been returned:\n")
 	mfs, err := registry.Gather()
